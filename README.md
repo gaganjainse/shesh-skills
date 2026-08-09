@@ -1,5 +1,12 @@
-# 🧰 shesha-skills
+# shesha-skills
 
+**everyday tools + Markdown skills** — Notes, web search/fetch, git, docs, reminders.
+
+- Layer: Mind (Mind)
+- License: GPL-3.0
+- Part of: [Shesha ecosystem](https://github.com/gaganjainse/shesha-ecosystem)
+
+---
 **Everyday tools and skills for the Shesha agent.** A stdio MCP server plus a library of
 Markdown skills covering notes, web research, coding, docs, scheduling, and safety/governance.
 
