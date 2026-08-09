@@ -1,4 +1,4 @@
-"""Offline tests for sesha-skills (no network, no real git/gh)."""
+"""Offline tests for shesha-skills (no network, no real git/gh)."""
 from __future__ import annotations
 
 import sys
@@ -6,7 +6,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-import sesha_skills.tools as t  # noqa: E402
+import shesha_skills.tools as t  # noqa: E402
 
 
 def test_append_note_creates_and_appends(tmp_path, monkeypatch):

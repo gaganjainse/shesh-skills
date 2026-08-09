@@ -1,4 +1,4 @@
-"""sesha-skills: everyday MCP tools and Markdown skills for the Sesha agent.
+"""shesha-skills: everyday MCP tools and Markdown skills for the Shesha agent.
 
 Tools are local-first and delegate to standard CLI utilities (gh, git, curl,
 pandoc) so there is no large dependency surface. Everything is wrapped so tests

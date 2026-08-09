@@ -1,4 +1,4 @@
-"""Sesha skills MCP server (stdio).
+"""Shesha skills MCP server (stdio).
 
 Exposes everyday tools: notes/vault, web search & fetch, git/github helpers,
 document conversion, and reminders. Designed for local-first use.
@@ -9,7 +9,7 @@ from mcp.server.fastmcp import FastMCP
 
 from . import tools
 
-mcp = FastMCP("sesha-skills")
+mcp = FastMCP("shesha-skills")
 
 
 @mcp.tool()
