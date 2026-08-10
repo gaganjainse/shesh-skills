@@ -7,9 +7,14 @@ from __future__ import annotations
 
 from mcp.server.fastmcp import FastMCP
 
+try:
+    from shesha_audit.mcp_guard import GuardedMCP as _MCP
+except ImportError:
+    _MCP = FastMCP
+
 from . import tools
 
-mcp = FastMCP("shesha-skills")
+mcp = _MCP("shesha-skills")
 
 
 @mcp.tool()
