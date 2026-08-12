@@ -5,7 +5,7 @@ document conversion, and reminders. Designed for local-first use.
 """
 from __future__ import annotations
 
-from mcp.server.fastmcp import FastMCP
+from fastmcp import FastMCP
 
 try:
     from shesh_audit.mcp_guard import GuardedMCP as _MCP
