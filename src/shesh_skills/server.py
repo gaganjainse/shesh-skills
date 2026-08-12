@@ -1,4 +1,4 @@
-"""Shesha skills MCP server (stdio).
+"""Shesh skills MCP server (stdio).
 
 Exposes everyday tools: notes/vault, web search & fetch, git/github helpers,
 document conversion, and reminders. Designed for local-first use.
@@ -8,13 +8,13 @@ from __future__ import annotations
 from mcp.server.fastmcp import FastMCP
 
 try:
-    from shesha_audit.mcp_guard import GuardedMCP as _MCP
+    from shesh_audit.mcp_guard import GuardedMCP as _MCP
 except ImportError:
     _MCP = FastMCP
 
 from . import tools
 
-mcp = _MCP("shesha-skills")
+mcp = _MCP("shesh-skills")
 
 
 @mcp.tool()

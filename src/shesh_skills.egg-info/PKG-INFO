@@ -1,3 +1,18 @@
+Metadata-Version: 2.4
+Name: shesh-skills
+Version: 0.1.0
+Summary: Shesh Soma/Mind: everyday MCP tools (notes, web, code, docs, reminders) and skills
+Author: Gagan Jain
+License: GPL-3.0-or-later
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: mcp[cli]>=1.0
+Requires-Dist: fastmcp>=0.1
+Requires-Dist: shesh-audit>=0.1
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: ruff>=0.6; extra == "dev"
+
 # shesh-skills
 
 **everyday tools + Markdown skills** — Notes, web search/fetch, git, docs, reminders.

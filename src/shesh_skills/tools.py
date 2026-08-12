@@ -1,4 +1,4 @@
-"""Everyday Shesha tools exposed over MCP.
+"""Everyday Shesh tools exposed over MCP.
 
 All functions are plain Python (no global state) so they can be unit-tested
 without a running MCP server. The MCP wiring lives in server.py.
@@ -65,7 +65,7 @@ def search_notes(query: str, vault: str | None = None) -> list[dict]:
 def duckduckgo_search(query: str, limit: int = 5) -> list[dict]:
     """Search the web using DuckDuckGo's instant HTML endpoint (no API key)."""
     url = "https://html.duckduckgo.com/html/?" + urllib.parse.urlencode({"q": query})
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 Shesha"})
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 Shesh"})
     try:
         with urllib.request.urlopen(req, timeout=15) as r:
             html = r.read().decode("utf-8", "ignore")
@@ -88,7 +88,7 @@ def duckduckgo_search(query: str, limit: int = 5) -> list[dict]:
 
 def fetch_url(url: str, max_bytes: int = 200_000) -> dict:
     """Fetch a URL and return text (HTML stripped to rough text)."""
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 Shesha"})
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 Shesh"})
     try:
         with urllib.request.urlopen(req, timeout=20) as r:
             data = r.read(max_bytes).decode("utf-8", "ignore")
@@ -136,9 +136,9 @@ def remind(in_minutes: int, text: str) -> dict:
     safe = text.replace("'", "'\\''")
     # Prefer `at` if available; else a detached sleep+notify-send.
     if run(["bash", "-c", "command -v at"]).ok:
-        cmd = f"echo \"notify-send Shesha '{safe}'\" | at now + {in_minutes} min"
+        cmd = f"echo \"notify-send Shesh '{safe}'\" | at now + {in_minutes} min"
         r = run(["bash", "-c", cmd])
     else:
         r = run(["bash", "-c",
-                 f"( sleep {in_minutes * 60}; notify-send Shesha '{safe}' ) & disown"])
+                 f"( sleep {in_minutes * 60}; notify-send Shesh '{safe}' ) & disown"])
     return {"ok": r.ok, "in_minutes": in_minutes, "detail": r.text}

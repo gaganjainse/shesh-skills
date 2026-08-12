@@ -1,18 +1,18 @@
 [project]
-name = "shesha-skills"
+name = "shesh-skills"
 version = "0.1.0"
-description = "Shesha Soma/Mind: everyday MCP tools (notes, web, code, docs, reminders) and skills"
+description = "Shesh Soma/Mind: everyday MCP tools (notes, web, code, docs, reminders) and skills"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "GPL-3.0-or-later" }
 authors = [{ name = "Gagan Jain" }]
-dependencies = ["mcp[cli]>=1.0", "fastmcp>=0.1", "shesha-audit>=0.1"]
+dependencies = ["mcp[cli]>=1.0", "fastmcp>=0.1", "shesh-audit>=0.1"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0", "ruff>=0.6"]
 
 [project.scripts]
-shesha-skills-mcp = "shesha_skills.server:main"
+shesh-skills-mcp = "shesh_skills.server:main"
 
 [tool.uv]
 environments = ["sys_platform == 'linux'"]

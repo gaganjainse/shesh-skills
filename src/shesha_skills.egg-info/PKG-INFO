@@ -1,18 +1,33 @@
-# shesh-skills
+Metadata-Version: 2.4
+Name: shesha-skills
+Version: 0.1.0
+Summary: Shesha Soma/Mind: everyday MCP tools (notes, web, code, docs, reminders) and skills
+Author: Gagan Jain
+License: GPL-3.0-or-later
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: mcp[cli]>=1.0
+Requires-Dist: fastmcp>=0.1
+Requires-Dist: shesha-audit>=0.1
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: ruff>=0.6; extra == "dev"
+
+# shesha-skills
 
 **everyday tools + Markdown skills** — Notes, web search/fetch, git, docs, reminders.
 
 - Layer: Mind (Mind)
 - License: GPL-3.0
-- Part of: [Shesh ecosystem](https://github.com/gaganjainse/shesh-ecosystem)
+- Part of: [Shesha ecosystem](https://github.com/gaganjainse/shesha-ecosystem)
 
 ---
-**Everyday tools and skills for the Shesh agent.** A stdio MCP server plus a library of
+**Everyday tools and skills for the Shesha agent.** A stdio MCP server plus a library of
 Markdown skills covering notes, web research, coding, docs, scheduling, and safety/governance.
 
 - License: GPL-3.0
 - Spans: Soma (actuators) + Mind (workflows)
-- Part of: [Shesh ecosystem](https://github.com/gaganjainse/shesh-ecosystem)
+- Part of: [Shesha ecosystem](https://github.com/gaganjainse/shesha-ecosystem)
 
 ## Tools (MCP)
 
@@ -35,7 +50,7 @@ Skills are prompt-level workflows the agent loads per task; the safety skill alw
 uv sync --extra dev
 uv run pytest -q          # offline; network/git are mocked
 uv run ruff check .
-uv run shesh-skills-mcp
+uv run shesha-skills-mcp
 ```
 
 ## Design
