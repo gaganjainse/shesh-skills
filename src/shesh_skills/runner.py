@@ -1,4 +1,5 @@
-"""Tiny subprocess wrapper used by every tool.
+"""Vendored twin of shesh-backup's runner.py (dedupe policy documented in shesh-backup + ADR-0018).
+Tiny subprocess wrapper used by every tool.
 
 Centralizing command execution makes the whole server testable: tests patch
 `run` to record calls instead of spawning real processes.
