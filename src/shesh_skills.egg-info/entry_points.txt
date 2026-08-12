@@ -1,2 +1,0 @@
-[console_scripts]
-shesh-skills-mcp = shesh_skills.server:main
