@@ -1,2 +1,2 @@
 [console_scripts]
-shesha-skills-mcp = shesha_skills.server:main
+shesh-skills-mcp = shesh_skills.server:main
