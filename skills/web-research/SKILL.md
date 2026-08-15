@@ -1,17 +1,31 @@
 ---
 name: web-research
-description: Research a topic using web search and fetch. Cite sources, prefer primary docs, stay local-first.
+description: Research a topic from primary sources and report with citations. Use when asked to investigate, compare options, check current documentation, or verify a claim.
+license: GPL-3.0-or-later
 ---
 
-# Web research skill
+# Web research
 
-1. `web_search(query)` → skim titles/URLs. Prefer official docs, release notes, arch wiki, GitHub.
-2. For 2–3 authoritative results, `fetch_url(url)` and extract the relevant section.
-3. **Cite every claim** with its URL. Prefer primary sources over blogs.
-4. Note the date of the source; flag outdated info.
-5. Save useful findings with `append_note("research/<topic>", ...)`.
-6. If cloud is off (default), never use an external API; DuckDuckGo HTML + fetch are allowed.
-7. Distinguish fact vs recommendation; end with a concrete next step.
+## Tools
 
-Avoid SEO spam and content farms. For code libraries, use Context7-style up-to-date docs
-when available (separate MCP), not the model's training cutoff.
+| Task | Call |
+|---|---|
+| Search | `shesh-skills-mcp` → `web_search(query)` |
+| Fetch a page | `shesh-skills-mcp` → `fetch_url(url)` |
+
+## Procedure
+
+1. Search, then read the primary source. Do not report from a search snippet.
+2. Prefer official documentation, specifications, and source repositories over
+   blog summaries.
+3. Note the publication date. For fast-moving tooling, a two-year-old page is
+   probably wrong.
+4. Report findings with a link for each claim.
+
+## Rules
+
+- **Every factual claim carries a source link.** A claim you cannot source is
+  stated as your inference, labelled as such.
+- When sources disagree, say so and give both.
+- Never present a model recollection as a search result.
+- If search returns nothing useful, report that. Do not fill the gap from memory.

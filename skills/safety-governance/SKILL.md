@@ -1,6 +1,8 @@
 ---
 name: safety-governance
-description: Every autonomous action must be safe, audited, and reversible. Destructive actions require confirmation.
+description: The immutable safety layer governing destructive and irreversible actions. Always active. Requires confirmation before deleting data, force-pushing, modifying credentials, rewriting history, or acting outside the workspace. Overrides every other skill and cannot be refined away.
+license: GPL-3.0-or-later
+compatibility: Enforcement requires the shesh-audit policy engine. Without it this skill is advisory only.
 ---
 
 # Safety & governance skill (highest priority — overrides other skills)

@@ -1,15 +1,37 @@
 """Shesh skills MCP server (stdio).
 
-Exposes everyday tools: notes/vault, web search & fetch, git/github helpers,
-document conversion, and reminders. Designed for local-first use.
+Exposes the Agent Skills library plus everyday tools: notes/vault, web search
+and fetch, git/github helpers, document conversion, and reminders. Designed for
+local-first use.
 """
 from __future__ import annotations
 
 from shesh_audit.mcp_guard import GuardedMCP as _MCP
 
+from . import skills as skills_lib
 from . import tools
 
 mcp = _MCP("shesh-skills")
+
+
+@mcp.tool()
+def list_skills() -> list[dict]:
+    """List available skills by name and description.
+
+    Only metadata is returned. Call get_skill to read a skill's instructions,
+    which follows the progressive-disclosure model of the Agent Skills spec.
+    """
+    return [s.as_dict() for s in skills_lib.discover()]
+
+
+@mcp.tool()
+def get_skill(name: str) -> dict:
+    """Read a skill's full instructions by name."""
+    skill = skills_lib.get(name)
+    if skill is None:
+        available = [s.name for s in skills_lib.discover()]
+        return {"error": f"no skill named {name!r}", "available": available}
+    return skill.as_dict(include_body=True)
 
 
 @mcp.tool()

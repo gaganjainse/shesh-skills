@@ -1,16 +1,35 @@
 ---
 name: docs-writer
-description: Write and convert documentation and notes in Markdown. Keep them organized, linked, and dated.
+description: Write or revise documentation in the house style. Use when asked to create, rewrite, or review a README, guide, reference page, or architecture decision record.
+license: GPL-3.0-or-later
+allowed-tools: Read Grep Glob Edit Write
 ---
 
-# Docs & notes skill
+# Documentation
 
-- **Capture first:** `append_note("inbox", ...)` for quick thoughts.
-- **Structure:** notes live under `~/Notes/{Daily,Tech,Ideas,Meetings,Shesh}`.
-  Daily notes are named `YYYY-MM-DD.md`.
-- **Markdown everywhere:** use headings, tables for comparisons, code fences with language.
-- **Convert docs:** `convert_to_markdown(path)` for PDF/DOCX/XLSX (pandoc).
-- **Link notes:** use relative `[[wikilinks]]`; tag with `#tag` at the bottom.
-- **Keep an index:** maintain `~/Notes/README.md` with links to active notes.
-- When answering from notes, `search_notes` first and cite the file.
-- Never put secrets in notes. Use `~/Vaults` (KeePassXC) instead.
+## Structure
+
+Every page is exactly one Diátaxis type. Do not mix them; link instead.
+
+| Type | Answers | Must not contain |
+|---|---|---|
+| Tutorial | "Teach me by doing" | Options, rationale |
+| How-to | "Help me do X" | Teaching, theory |
+| Reference | "Tell me the exact fact" | Steps, opinion |
+| Explanation | "Help me understand why" | Instructions |
+
+## Voice
+
+- Second person, present tense, active voice.
+- Sentence case headings. No emoji.
+- No first person: no "we", "our", "I".
+- No self-assessment: not "clean", "robust", "foolproof".
+- No filler: not "simply", "just", "obviously".
+
+## Facts
+
+- **No volatile counts.** Test counts, component counts, and provider counts are
+  wrong shortly after writing. Generate the page or give the command instead.
+- Document committed behaviour only. Unbuilt work goes on a roadmap, dated.
+- Never state that a component does something without checking that it does.
+- One fact lives in exactly one place; everything else links to it.
