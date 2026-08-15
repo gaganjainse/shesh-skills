@@ -9,12 +9,19 @@ call, which is worse than having no skill: the agent believes it can do the job.
 
 ## What exists today
 
-Sixty Model Context Protocol tools across twelve packages in `shesh-core`,
-covering power and thermal, GPU mode, audio, screenshots, recording, wallpaper,
-windows and workspaces, files, disk, backup, updates, observability, audit,
-policy, secrets, containers, model routing, calendar, messaging, and notes.
+Model Context Protocol tools in `shesh-core` cover power and thermal, GPU mode,
+audio, screenshots, recording, wallpaper, windows and workspaces, files, disk,
+backup, updates, observability, audit, policy, secrets, containers, model
+routing, calendar, messaging, and notes.
 
-Twenty-nine skills are built on those tools.
+Counts are deliberately not written here. A number in prose goes stale the next
+time a tool is added and then misleads whoever reads it. For the current figure,
+count them:
+
+```bash
+grep -rho '@mcp.tool()' ../shesh-core/src | wc -l   # tools
+ls skills | wc -l                                    # skills
+```
 
 ## What is missing
 
@@ -23,7 +30,7 @@ desktop user would reach for it.
 
 ### Closed on 2026-08-15
 
-Implemented in `shesh_desktop_ctl` (19 tools, 46 tests) with skills to match.
+Implemented in `shesh_desktop_ctl` with skills to match.
 
 | Capability | Skill | Tools |
 |---|---|---|

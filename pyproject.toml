@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "GPL-3.0-or-later" }
 authors = [{ name = "Gagan Jain" }]
-dependencies = ["fastmcp>=3.4.7,<4", "shesh-audit>=0.1"]
+dependencies = ["fastmcp>=3.4.7,<4", "shesh-core>=0.1"]
 
 [project.optional-dependencies]
 dev = ["pytest>=9.1,<10", "ruff>=0.16,<1"]
@@ -20,6 +20,11 @@ shesh-skills-mcp = "shesh_skills.server:main"
 
 [tool.uv]
 environments = ["sys_platform == 'linux'"]
+
+[tool.uv.sources]
+# shesh-audit was never a PyPI distribution: it is a package inside shesh-core
+# (ADR-0019). Depending on it by name could never resolve.
+shesh-core = { path = "../shesh-core", editable = true }
 
 [tool.ruff]
 line-length = 100
