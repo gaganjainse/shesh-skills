@@ -51,13 +51,22 @@ class Skill:
 
 
 class SkillError(ValueError):
-    """A SKILL.md that does not satisfy the specification."""
+    """A SKILL.md that does not satisfy the specification.
+
+    The message is built here rather than at each raise so the wording stays
+    consistent and ruff's TRY003 is satisfied.
+    """
+
+    def __init__(self, path: object, problem: str) -> None:
+        super().__init__(f"{path}: {problem}")
+        self.path = path
+        self.problem = problem
 
 
 def _parse(text: str, path: Path) -> tuple[dict, str]:
     m = FRONTMATTER.match(text)
     if not m:
-        raise SkillError(f"{path}: missing YAML frontmatter")
+        raise SkillError(path, "missing YAML frontmatter")
     meta: dict[str, str] = {}
     for line in m.group(1).split("\n"):
         if not line.strip() or line.lstrip().startswith("#"):
@@ -85,23 +94,23 @@ def load_skill(directory: Path) -> Skill:
     """Load and validate one skill directory."""
     skill_file = directory / "SKILL.md"
     if not skill_file.is_file():
-        raise SkillError(f"{directory}: no SKILL.md")
+        raise SkillError(directory, "no SKILL.md")
 
     meta, body = _parse(skill_file.read_text(encoding="utf-8"), skill_file)
 
     name = meta.get("name") or directory.name
     if name != directory.name:
-        raise SkillError(f"{skill_file}: name {name!r} does not match directory")
+        raise SkillError(skill_file, f"name {name!r} does not match directory")
     if len(name) > MAX_NAME or not NAME_RE.fullmatch(name):
-        raise SkillError(f"{skill_file}: name must be kebab-case, <= {MAX_NAME} chars")
+        raise SkillError(skill_file, f"name must be kebab-case, at most {MAX_NAME} chars")
 
     description = meta.get("description", "").strip()
     if not description:
-        raise SkillError(f"{skill_file}: description is required")
+        raise SkillError(skill_file, "description is required")
     if len(description) > MAX_DESCRIPTION:
-        raise SkillError(f"{skill_file}: description exceeds {MAX_DESCRIPTION} chars")
+        raise SkillError(skill_file, f"description exceeds {MAX_DESCRIPTION} chars")
     if not body.strip():
-        raise SkillError(f"{skill_file}: body is empty")
+        raise SkillError(skill_file, "body is empty")
 
     raw_tools = meta.get("allowed-tools", "")
     tools = tuple(t for t in re.split(r"[,\s]+", raw_tools) if t)
