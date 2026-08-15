@@ -38,6 +38,23 @@ Implemented in `shesh_desktop_ctl` (19 tools, 46 tests) with skills to match.
 Destructive actions require an explicit `confirm=True`; the tool refuses
 without it.
 
+### Closed by adoption on 2026-08-15
+
+[ADR-0020](https://github.com/gaganjainse/shesh-docs/blob/main/src/governance/adr/0020-adopt-computer-use-linux.md)
+adopts [computer-use-linux](https://github.com/agent-sh/computer-use-linux)
+(MIT) rather than reimplementing it. Proxied through the policy guard by
+`shesh_desktop_ctl.automation`; the `desktop-automation` skill covers use.
+
+| Capability | Provided by |
+|---|---|
+| Accessibility tree | `accessibility_tree` |
+| Window listing and targeting | `windows`, `list_windows`, `activate_window` |
+| Screen capture | `screenshot` |
+| Input injection | `click`, `type_text`, `press_key`, `drag`, `scroll` |
+
+Acting tools require `confirm=True` independently of the policy verdict, so a
+permissive policy cannot enable blind clicking.
+
 ### Still open, high value
 
 | Capability | Needs | Backing interface |
